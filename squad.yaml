@@ -13,6 +13,7 @@ components:
     - agents/gpx-pesquisador.md
     - agents/gpx-redator.md
     - agents/gpx-revisor.md
+    - agents/gpx-dev.md
   workflows:
     - workflows/estagiario-workflow.yaml
   tasks: []

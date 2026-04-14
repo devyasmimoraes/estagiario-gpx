@@ -3,7 +3,7 @@
 **Versão:** 1.0.0
 **Autor:** Yasmim Moraes
 **Data:** Abril de 2026
-**Status:** Em desenvolvimento
+**Status:** Squad Operacional (IDS: 752 entidades registradas)
 
 ***
 
@@ -12,6 +12,8 @@
 O Estagiário GPX é um squad de agentes de IA construído com AIOX que executa tarefas operacionais e repetitivas de forma autônoma. A ideia surgiu da necessidade de ter um assistente que pesquisa, redige e revisa conteúdo sem que eu precise gerenciar cada etapa manualmente.
 
 Funciona como um estagiário virtual: recebe uma tarefa, executa o pipeline completo de pesquisa → redação → revisão e entrega o resultado pronto.
+
+O projeto está totalmente registrado no **IDS (Intelligent Design System)**, com um total de **752 entidades** mapeadas, garantindo a integridade e rastreabilidade de todas as definições.
 
 ***
 
@@ -23,10 +25,12 @@ Tarefas operacionais repetitivas (pesquisar temas, redigir e-mails, montar resum
 
 ## Solução
 
-Um squad de 4 agentes especializados que trabalham em pipeline. Cada agente tem um papel claro, limitações definidas e critérios de qualidade antes de passar a tarefa para o próximo.
+Um squad de 5 agentes especializados que trabalham em pipeline ou de forma colaborativa técnica. Cada agente tem um papel claro, limitações definidas e critérios de qualidade antes de passar a tarefa para o próximo.
 
 ```
 Usuário → Max (Gerente) → Scout (Pesquisa) → Pen (Redação) → Gate (Revisão) → Entrega
+                            ↑
+                          Forge (Desenvolvimento)
 ```
 
 ***
@@ -91,6 +95,18 @@ Quality gate do squad. Nada sai sem passar pelo Gate. Revisa ortografia, gramát
 
 ***
 
+### Forge — Desenvolvedor
+
+Executor técnico do squad. Transforma instruções técnicas em código funcional, lê e modifica arquivos do projeto com precisão.
+
+**Responsabilidades:**
+- Executar alterações em arquivos e diretórios
+- Manter padrões de código e arquitetura
+- Prover previews de implementações técnicas
+- Apoiar na automação do pipeline do squad
+
+***
+
 ## Pipeline
 
 ```yaml
@@ -117,7 +133,7 @@ estagiario-gpx/
 │   ├── redigir-conteudo.md
 │   └── revisar-entrega.md
 ├── workflows/
-│   └── pipeline-estagiario.yaml
+│   └── estagiario-workflow.yaml
 ├── checklists/
 │   └── quality-gate.md
 ├── config/
@@ -151,10 +167,10 @@ Todo entregável passa pelo checklist do Gate antes de chegar ao usuário:
 |------|---------------|--------|
 | 1 — Base | Estrutura do projeto, squad.yaml, README | ✅ Concluído |
 | 2 — Agentes | Definição dos 4 agentes com papéis e limitações | ✅ Concluído |
-| 3 — Tasks | Implementação das 3 tasks com parâmetros e critérios | 🔄 Em andamento |
-| 4 — Workflow | Pipeline completo e quality gate | 🔄 Em andamento |
-| 5 — Config | Padrões de código, tech stack e source tree | 🔜 Próximo |
-| 6 — Integrações | Gmail, Notion, WhatsApp | 🔜 Futuro |
+| 3 — Tasks | Implementação das 3 tasks com parâmetros e critérios | ✅ Concluído |
+| 4 — Workflow | Pipeline completo e quality gate | ✅ Concluído |
+| 5 — Registro IDS | Mapeamento de 752 entidades | ✅ Concluído |
+| 6 — Integrações | Gmail, Notion, WhatsApp | 🔜 Próximo |
 | 7 — Interface | Painel web para gerenciar tarefas | 🔜 Futuro |
 
 ***
@@ -164,8 +180,8 @@ Todo entregável passa pelo checklist do Gate antes de chegar ao usuário:
 **Por que AIOX?**
 É o framework que estou aprendendo. O projeto é intencionalmente simples no início para focar em entender como os agentes se comunicam, como as tasks são estruturadas e como o pipeline funciona na prática.
 
-**Por que 4 agentes e não 1?**
-Cada agente com responsabilidade única é mais fácil de debugar, iterar e escalar. Se o Pen escrever mal, mexo só nele. Se o Scout trouxer fontes ruins, ajusto só ele. Separação de responsabilidades — o mesmo princípio do clean code aplicado a agentes.
+**Por que 5 agentes e não 1?**
+Cada agente com responsabilidade única é mais fácil de debugar, iterar e escalar. Se o Pen escrever mal, mexo só nele. Se o Scout trouxer fontes ruins, ajusto só ele. O Forge entra para garantir que a execução técnica também seja isolada e especializada. Separação de responsabilidades — o mesmo princípio do clean code aplicado a agentes.
 
 **Por que começar com casos de uso simples?**
 Integrações com APIs externas (Gmail, Notion) adicionam complexidade que dificulta o aprendizado. A Fase 1 a 4 é sobre entender o core do AIOX. As integrações vêm depois, quando a base estiver sólida.
