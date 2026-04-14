@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estagiário GPX — Interface Web</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Estagiário GPX</h1>
+            <p>Orquestração de Squad de IA em Tempo Real</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <textarea id="instructionInput" placeholder="Digite sua instrução aqui (ex: 'Pesquise sobre IA em 2026 e gere um resumo')"></textarea>
+                <button id="submitBtn">Enviar Instrução</button>
+            </section>
+
+            <section class="log-section">
+                <h2>Timeline de Execução</h2>
+                <div id="logConsole" class="terminal">
+                    <div class="log-entry system">Aguardando instrução...</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal de Aprovação do Forge (Oculto por padrão) -->
+    <div id="diffModal" class="modal">
+        <div class="modal-content">
+            <h3>Aprovação Obrigatória: Forge (gpx-dev)</h3>
+            <p id="diffDescription">O agente propôs as seguintes alterações:</p>
+            <div id="diffViewer" class="diff-container">
+                <!-- O diff visual aparecerá aqui -->
+            </div>
+            <div class="modal-actions">
+                <button id="approveBtn" class="btn-approve">Aprovar Alterações</button>
+                <button id="rejectBtn" class="btn-reject">Rejeitar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
