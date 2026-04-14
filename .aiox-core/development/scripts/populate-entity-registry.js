@@ -13,13 +13,17 @@ const REGISTRY_PATH = path.resolve(__dirname, '../../data/entity-registry.yaml')
 
 const SCAN_CONFIG = [
   { category: 'tasks', basePath: '.aiox-core/development/tasks', glob: '**/*.md', type: 'task' },
+  { category: 'tasks', basePath: 'tasks', glob: '**/*.md', type: 'task' },
   { category: 'templates', basePath: '.aiox-core/product/templates', glob: '**/*.{yaml,yml,md}', type: 'template' },
   { category: 'scripts', basePath: '.aiox-core/development/scripts', glob: '**/*.{js,mjs}', type: 'script' },
   { category: 'modules', basePath: '.aiox-core/core', glob: '**/*.{js,mjs}', type: 'module' },
   { category: 'agents', basePath: '.aiox-core/development/agents', glob: '**/*.{md,yaml,yml}', type: 'agent' },
+  { category: 'agents', basePath: 'agents', glob: '**/*.{md,yaml,yml}', type: 'agent' },
   { category: 'checklists', basePath: '.aiox-core/development/checklists', glob: '**/*.md', type: 'checklist' },
+  { category: 'checklists', basePath: 'checklists', glob: '**/*.md', type: 'checklist' },
   { category: 'data', basePath: '.aiox-core/data', glob: '**/*.{yaml,yml,md}', type: 'data' },
   { category: 'workflows', basePath: '.aiox-core/development/workflows', glob: '**/*.{yaml,yml}', type: 'workflow' },
+  { category: 'workflows', basePath: 'workflows', glob: '**/*.{yaml,yml}', type: 'workflow' },
   { category: 'utils', basePath: '.aiox-core/core/utils', glob: '**/*.js', type: 'util' },
   { category: 'tools', basePath: '.aiox-core/development/tools', glob: '**/*.{md,js,sh}', type: 'tool' },
   { category: 'infra-scripts', basePath: '.aiox-core/infrastructure/scripts', glob: '**/*.js', type: 'script' },
@@ -532,9 +536,18 @@ function populate(options = {}) {
     console.log(`[IDS] Scanning ${config.category} in ${config.basePath}...`);
     const entities = scanCategory(config, verbose);
     const count = Object.keys(entities).length;
-    allEntities[config.category] = entities;
+    if (!allEntities[config.category]) {
+      allEntities[config.category] = {};
+    }
+    Object.assign(allEntities[config.category], entities);
     totalCount += count;
     console.log(`[IDS]   Found ${count} ${config.category}`);
+  }
+
+  // Recalculate totalCount after merging to avoid double counting if any overlaps existed
+  totalCount = 0;
+  for (const categoryEntities of Object.values(allEntities)) {
+    totalCount += Object.keys(categoryEntities).length;
   }
 
   // Preserve invocationExamples from existing registry (TOK-4B)
