@@ -1,0 +1,19 @@
+{
+  "name": "estagiario-gpx",
+  "version": "1.0.0",
+  "description": "**Versão:** 1.0.0 **Autor:** Yasmim Moraes **Data:** Abril de 2026 **Status:** Em desenvolvimento",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}
