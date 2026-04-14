@@ -1,0 +1,20 @@
+name: estagiario-gpx
+version: 1.0.0
+short-title: Squad Estagiário GPX
+description: Squad focado em pesquisa, redação e revisão de conteúdos de alta qualidade.
+author: Yasmim Moraes
+license: MIT
+aiox:
+  minVersion: 4.31.0
+  type: squad
+components:
+  agents:
+    - agents/gpx-gerente.md
+    - agents/gpx-pesquisador.md
+    - agents/gpx-redator.md
+    - agents/gpx-revisor.md
+  workflows:
+    - workflows/estagiario-workflow.yaml
+  tasks: []
+  templates: []
+  checklists: []

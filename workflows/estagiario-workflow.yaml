@@ -1,0 +1,79 @@
+workflow:
+  id: estagiario-workflow
+  name: Fluxo Estagiário GPX
+  version: "1.0"
+  description: >-
+    Pipeline padrão do squad Estagiário GPX:
+    pesquisa → redação → revisão → entrega.
+  type: generic
+
+  metadata:
+    elicit: true
+    confirmation_required: true
+
+  phases:
+    - phase_1: Orquestração
+    - phase_2: Pesquisa
+    - phase_3: Redação
+    - phase_4: Revisão
+    - phase_5: Entrega
+
+  sequence:
+    - step: gerenciar_tarefa
+      id: start
+      phase: 1
+      agent: gpx-gerente
+      action: Receber e planejar tarefa
+      notes: |
+        O Gerente (Max) recebe a solicitação, valida o entendimento
+        e planeja as etapas para os demais agentes.
+      outputs:
+        - plano_execucao
+      next: pesquisar
+
+    - step: pesquisar_tema
+      id: pesquisar
+      phase: 2
+      agent: gpx-pesquisador
+      action: Coletar e estruturar informações
+      requires: start
+      notes: |
+        O Pesquisador (Scout) coleta dados, valida fontes e
+        entrega um briefing estruturado.
+      outputs:
+        - briefing_pesquisa
+      next: redigir
+
+    - step: redigir_conteudo
+      id: redigir
+      phase: 3
+      agent: gpx-redator
+      action: Produzir conteúdo final
+      requires: pesquisar
+      notes: |
+        O Redator (Pen) transforma o briefing em conteúdo
+        no formato e tom solicitados.
+      outputs:
+        - rascunho_conteudo
+      next: revisar
+
+    - step: revisar_qualidade
+      id: revisar
+      phase: 4
+      agent: gpx-revisor
+      action: Quality gate e revisão final
+      requires: redigir
+      notes: |
+        O Revisor (Gate) valida ortografia, gramática, tom e
+        alinhamento com o objetivo inicial.
+      outputs:
+        - conteudo_revisado
+        - status_revisao
+      next: entregar
+      on_failure: redigir
+
+    - workflow_end:
+      id: entregar
+      action: entrega_final
+      notes: |
+        Entrega do conteúdo final ao usuário com resumo da revisão.

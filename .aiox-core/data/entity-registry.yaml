@@ -12819,6 +12819,90 @@ entities:
       checksum: sha256:dd025894f8f0d3bd22a147dbc0debef8b83e96f3c59483653404b3cd5a01d5aa
       lastVerified: '2026-04-13T18:49:29.653Z'
   agents:
+    gpx-gerente:
+      path: agents/gpx-gerente.md
+      layer: L2
+      type: agent
+      purpose: Orquestrador principal do squad GPX (Max)
+      keywords:
+        - gpx
+        - gerente
+        - max
+        - orquestrador
+      usedBy: []
+      dependencies: []
+      externalDeps: []
+      plannedDeps: []
+      lifecycle: production
+      adaptability:
+        score: 0.8
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:61cd2ef6a6f468bd036e966e2a7951fe3d70417ec9edb08a41f7fb523ad730e7
+      lastVerified: '2026-04-14T10:00:00.000Z'
+    gpx-pesquisador:
+      path: agents/gpx-pesquisador.md
+      layer: L2
+      type: agent
+      purpose: Coleta e estrutura informações para o squad GPX (Scout)
+      keywords:
+        - gpx
+        - pesquisador
+        - scout
+        - pesquisa
+      usedBy: []
+      dependencies: []
+      externalDeps: []
+      plannedDeps: []
+      lifecycle: production
+      adaptability:
+        score: 0.8
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:017ad423611737262d2d2923e306a5b4c12688823e3b5a6d1c07a7e2378d6052
+      lastVerified: '2026-04-14T10:00:00.000Z'
+    gpx-redator:
+      path: agents/gpx-redator.md
+      layer: L2
+      type: agent
+      purpose: Produção de conteúdo para o squad GPX (Pen)
+      keywords:
+        - gpx
+        - redator
+        - pen
+        - redação
+      usedBy: []
+      dependencies: []
+      externalDeps: []
+      plannedDeps: []
+      lifecycle: production
+      adaptability:
+        score: 0.8
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:53a79f858f8d610f721ee275a914e25ff980ff20d178ba0e13cba6fe945b143f
+      lastVerified: '2026-04-14T10:00:00.000Z'
+    gpx-revisor:
+      path: agents/gpx-revisor.md
+      layer: L2
+      type: agent
+      purpose: Revisão de qualidade para o squad GPX (Gate)
+      keywords:
+        - gpx
+        - revisor
+        - gate
+        - revisão
+      usedBy: []
+      dependencies: []
+      externalDeps: []
+      plannedDeps: []
+      lifecycle: production
+      adaptability:
+        score: 0.8
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:9f2b3e6ace56cdc99df4b7a8a5eec1eb439a75821d2c449129637e60c7ef0798
+      lastVerified: '2026-04-14T10:00:00.000Z'
     aiox-master:
       path: .aiox-core/development/agents/aiox-master.md
       layer: L2
